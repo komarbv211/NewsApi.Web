@@ -46,6 +46,18 @@ namespace NewsApi.Infrastructure.Initializers
                 }
             );
         }
+        public static async Task SeedStatistics(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Statistics>().HasData(new Statistics[]
+                {
+            new Statistics() { Id = 1, VisitTime = DateTime.Now, NewsId = 1, IpAddress = "192.168.0.1" },
+            new Statistics() { Id = 2, VisitTime = DateTime.Now, NewsId = 1, IpAddress = "192.168.0.2" },
+            new Statistics() { Id = 3, VisitTime = DateTime.Now, NewsId = 1, IpAddress = "192.168.0.3" },
+            new Statistics() { Id = 4, VisitTime = DateTime.Now, NewsId = 2, IpAddress = "192.168.0.4" },
+            new Statistics() { Id = 5, VisitTime = DateTime.Now, NewsId = 2, IpAddress = "192.168.0.5" }
+                }
+            );
+        }
 
     }
 }

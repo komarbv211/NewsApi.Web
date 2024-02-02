@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsApi.Infrastructure.Context;
 
@@ -11,9 +12,11 @@ using NewsApi.Infrastructure.Context;
 namespace NewsApi.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240202132030_AddStatisticsNetity")]
+    partial class AddStatisticsNetity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,43 +165,6 @@ namespace NewsApi.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statistics");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IpAddress = "192.168.0.1",
-                            NewsId = 1,
-                            VisitTime = new DateTime(2024, 2, 2, 15, 22, 33, 588, DateTimeKind.Local).AddTicks(1120)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IpAddress = "192.168.0.2",
-                            NewsId = 1,
-                            VisitTime = new DateTime(2024, 2, 2, 15, 22, 33, 588, DateTimeKind.Local).AddTicks(1197)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IpAddress = "192.168.0.3",
-                            NewsId = 1,
-                            VisitTime = new DateTime(2024, 2, 2, 15, 22, 33, 588, DateTimeKind.Local).AddTicks(1200)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IpAddress = "192.168.0.4",
-                            NewsId = 2,
-                            VisitTime = new DateTime(2024, 2, 2, 15, 22, 33, 588, DateTimeKind.Local).AddTicks(1203)
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IpAddress = "192.168.0.5",
-                            NewsId = 2,
-                            VisitTime = new DateTime(2024, 2, 2, 15, 22, 33, 588, DateTimeKind.Local).AddTicks(1207)
-                        });
                 });
 #pragma warning restore 612, 618
         }
