@@ -12,11 +12,11 @@ namespace NewsApi.Infrastructure.Context
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedCategory();
             modelBuilder.SeedAuthor();
-
-            //modelBuilder.SeedNews();
+            modelBuilder.SeedNews();
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Authors> Authors { get; set; }
+        public DbSet<News> News { get; set; }
     }
 }
