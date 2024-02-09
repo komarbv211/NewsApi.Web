@@ -16,8 +16,8 @@ namespace NewsApi.Core
         {
             services.AddScoped(typeof(IBaseService<News>), typeof(BaseService<News>));
             services.AddScoped(typeof(IBaseService<Authors>), typeof(BaseService<Authors>));
-            //services.AddScoped(typeof(IBaseService<Roles>), typeof(BaseService<Roles>));
-            //services.AddScoped(typeof(IBaseService<Users>), typeof(BaseService<Users>));
+            services.AddScoped(typeof(IBaseService<Roles>), typeof(BaseService<Roles>));
+            services.AddScoped(typeof(IBaseService<Users>), typeof(BaseService<Users>));
             services.AddScoped(typeof(IBaseService<Statistics>), typeof(BaseService<Statistics>));
         }
     }

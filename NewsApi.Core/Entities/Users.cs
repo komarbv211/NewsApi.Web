@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NewsApi.Core.Entities
 {
-    public class Users 
+    public class Users : IEntity
     {
         public int Id { get; set; }
 
