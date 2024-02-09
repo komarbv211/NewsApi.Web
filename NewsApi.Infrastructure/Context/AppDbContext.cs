@@ -1,6 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsApi.Core.Entities;
 using NewsApi.Infrastructure.Initializers;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NewsApi.Infrastructure.Context
 {
     internal class AppDbContext : DbContext

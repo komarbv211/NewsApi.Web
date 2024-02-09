@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using NewsApi.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,15 +22,7 @@ namespace NewsApi.Infrastructure.Initializers
                 }
             );
         }
-        public static async Task SeedAuthor(this ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Authors>().HasData(new Authors[]
-                {
-                    new Authors() { Id = 1, FullName = "Chij Vika" , Pseudonym = "Victory" },
-                    new Authors() { Id = 2, FullName = "Goch Petro" , Pseudonym = "Piter" }
-                }
-            );
-        }
+
         public static async Task SeedNews(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<News>().HasData(new News[]
@@ -46,6 +41,17 @@ namespace NewsApi.Infrastructure.Initializers
                 }
             );
         }
+
+        public static async Task SeedAuthor(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Authors>().HasData(new Authors[]
+                {
+                    new Authors() { Id = 1, FullName = "Chij Vika" , Pseudonym = "Victory" },
+                    new Authors() { Id = 2, FullName = "Goch Petro" , Pseudonym = "Piter" }
+                }
+            );
+        }
+
         public static async Task SeedStatistics(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Statistics>().HasData(new Statistics[]
@@ -80,7 +86,6 @@ namespace NewsApi.Infrastructure.Initializers
                 }
             );
         }
-
 
     }
 }

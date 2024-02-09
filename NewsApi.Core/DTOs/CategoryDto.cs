@@ -1,15 +1,15 @@
-﻿using NewsApi.Core.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NewsApi.Core.Entities
+namespace NewsApi.Core.DTOs
 {
-    public class Roles 
+    public class CategoryDto
     {
-        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
+
     }
 }

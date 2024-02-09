@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using NewsApi.Core.DTOs;
 using NewsApi.Core.Entities;
 using NewsApi.Core.Interfaces;
 using System.Threading.Tasks;
@@ -11,47 +13,51 @@ namespace NewsApi.Web.Controllers
 
     public class CategoryController : ControllerBase
     {
-        //private readonly INewsService<Category> _categorysService;
+        private readonly IBaseService<Category> _categoryService;
+        private readonly IMapper _mapper;
 
-        //public CategoryController(INewsService<Category> _categoryService)
-        //{
-        //    _categorysService = _categoryService;
-        //}
+        public CategoryController(IBaseService<Category> categoryService, IMapper mapper)
+        {
+            _categoryService = categoryService;
+            _mapper = mapper;
+        }
 
-        //[HttpGet("GetAll")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var category = await _categorysService.GetAll();
-        //    return Ok(category);
-        //}
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var news = await _categoryService.GetAll();
+            var newsDtoList = news.Select(n => _mapper.Map<CategoryDto>(n)).ToList();
+            return Ok(newsDtoList);
+        }
 
-        //[HttpPost("GetAll")]
-        //public async Task<IActionResult> GetById(int Id)
-        //{
-        //    var category = await _categorysService.Get(Id);
-        //    return Ok(category);
-        //}
+        [HttpPost("GetById")]
+        public async Task<IActionResult> GetById(int Id)
+        {
+            var news = await _categoryService.Get(Id);
+            var newsDto = _mapper.Map<CategoryDto>(news);
+            return Ok(newsDto);
+        }
 
-        //[HttpPost("Insert")]
-        //public async Task<IActionResult> Insert(Category model)
-        //{
-        //    await _categorysService.Insert(model);
-        //    return Ok();
-        //}
+        [HttpPost("Insert")]
+        public async Task<IActionResult> Insert(CategoryDto model)
+        {
+            await _categoryService.Insert(model);
+            return Ok();
+        }
 
-        //[HttpPost("Update")]
-        //public async Task<IActionResult> Update(Category model)
-        //{
-        //    await _categorysService.Update(model);
-        //    return Ok();
-        //}
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update(CategoryDto model, int id)
+        {
+            await _categoryService.Update(model, id);
+            return Ok();
+        }
 
-        //[HttpDelete("Delete")]
-        //public async Task<IActionResult> Delete(int Id)
-        //{
-        //    await _categorysService.Delete(Id);
-        //    return Ok();
-        //}
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            await _categoryService.Delete(Id);
+            return Ok();
+        }
     }
 
 }
