@@ -11,14 +11,19 @@ namespace NewsApi.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedCategory();
-            modelBuilder.SeedAuthor();
             modelBuilder.SeedNews();
+            modelBuilder.SeedAuthor();
             modelBuilder.SeedStatistics();
+            modelBuilder.SeedRole();
+            modelBuilder.SeedUsers();
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Authors> Authors { get; set; }
+        public DbSet<Authors> Author { get; set; }
         public DbSet<News> News { get; set; }
+
         public DbSet<Statistics> Statistics { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }

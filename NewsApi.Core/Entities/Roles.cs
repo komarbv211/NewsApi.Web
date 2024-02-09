@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace NewsApi.Core.Entities
 {
-    public class Statistics : IEntity
+    public class Roles : IEntity
     {
         public int Id { get; set; }
-        public DateTime VisitTime { get; set; }
-        public int NewsId { get; set; }
-        public string IpAddress { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

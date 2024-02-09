@@ -1,5 +1,6 @@
-
+using NewsApi.Core;
 using NewsApi.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Crete connection string
@@ -8,6 +9,14 @@ string conStr = builder.Configuration.GetConnectionString("DefaultConnection");
 // Add AppDbContext
 builder.Services.AddDbContext(conStr);
 
+// Add Repository
+builder.Services.AddRepositories();
+
+// Add Core Services
+builder.Services.AddCoreServices();
+
+// Add Mapping
+builder.Services.AddMapping();
 
 // Add services to the container.
 

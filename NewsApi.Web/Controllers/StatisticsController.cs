@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewsApi.Core.DTOs;
 using NewsApi.Core.Entities;
@@ -9,51 +8,52 @@ namespace NewsApi.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NewsController : ControllerBase
+    public class StatisticsController : ControllerBase
     {
-        private readonly IBaseService<News> _newsService;
+        private readonly IBaseService<Statistics> _statisticsService;
         private readonly IMapper _mapper;
-        public NewsController(IBaseService<News> newsService, IMapper mapper)
+
+        public StatisticsController(IBaseService<Statistics> statisticsService, IMapper mapper)
         {
-            _newsService = newsService;
+            _statisticsService = statisticsService;
             _mapper = mapper;
         }
 
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            var news = await _newsService.GetAll();
-            var newsDtoList = news.Select(n => _mapper.Map<NewsDto>(n)).ToList();
+            var news = await _statisticsService.GetAll();
+            var newsDtoList = news.Select(n => _mapper.Map<StatisticsDto>(n)).ToList();
             return Ok(newsDtoList);
         }
 
         [HttpPost("GetById")]
         public async Task<IActionResult> GetById(int Id)
         {
-            var news = await _newsService.Get(Id);
-            var newsDto = _mapper.Map<NewsDto>(news);
+            var news = await _statisticsService.Get(Id);
+            var newsDto = _mapper.Map<StatisticsDto>(news);
             return Ok(newsDto);
         }
-
         [HttpPost("Insert")]
-        public async Task<IActionResult> Insert(NewsInsertDto model)
+        public async Task<IActionResult> Insert(StatisticsDto model)
         {
-            await _newsService.Insert(model);
+            await _statisticsService.Insert(model);
             return Ok();
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update(NewsInsertDto model, int id)
+        public async Task<IActionResult> Update(StatisticsDto model, int id)
         {
-            await _newsService.Update(model, id);
+            await _statisticsService.Update(model, id);
             return Ok();
         }
 
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(int Id)
         {
-            await _newsService.Delete(Id);
+            await _statisticsService.Delete(Id);
             return Ok();
         }
+
     }
 }

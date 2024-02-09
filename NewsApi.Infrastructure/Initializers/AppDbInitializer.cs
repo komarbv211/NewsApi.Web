@@ -58,6 +58,29 @@ namespace NewsApi.Infrastructure.Initializers
                 }
             );
         }
+        public static async Task SeedRole(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Roles>().HasData(new Roles[]
+                {
+                    new Roles() { Id = 1, Name = "Admin"  },
+                    new Roles() { Id = 2, Name = "Redactor" },
+                    new Roles() { Id = 3, Name = "Writer" }
+                }
+            );
+        }
+        public static async Task SeedUsers(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Users>().HasData(new Users[]
+                {
+            new Users() { Id = 1, FullName = "John Doe", Email = "john@example.com", PhoneNumber = "123456789", Address = "123 Main St", RolesId = 1 },
+            new Users() { Id = 2, FullName = "Jane Smith", Email = "jane@example.com", PhoneNumber = "987654321", Address = "456 Oak St", RolesId = 2 },
+            new Users() { Id = 3, FullName = "Alice Johnson", Email = "alice@example.com", PhoneNumber = "555666777", Address = "789 Elm St", RolesId = 3 },
+            new Users() { Id = 4, FullName = "Bob Anderson", Email = "bob@example.com", PhoneNumber = "111222333", Address = "101 Pine St", RolesId = 2 },
+            new Users() { Id = 5, FullName = "Eva Davis", Email = "eva@example.com", PhoneNumber = "999888777", Address = "202 Maple St", RolesId = 1 }
+                }
+            );
+        }
+
 
     }
 }
