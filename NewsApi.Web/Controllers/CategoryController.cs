@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using NewsApi.Core.DTOs;
 using NewsApi.Core.Entities;
 using NewsApi.Core.Interfaces;
-using System.Threading.Tasks;
 
 
 namespace NewsApi.Web.Controllers
